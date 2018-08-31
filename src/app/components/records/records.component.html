@@ -1,0 +1,307 @@
+<div class="records-container" *ngIf="!isMatched; else handset">
+  <mat-grid-list cols="3" rowHeight="100px" gutterSize="5px">
+
+    <mat-grid-tile colspan="1" rowspan="6">
+      <mat-card class="pc-side-content">
+        <mat-card-header>
+          <mat-form-field floatLabel="never">
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="Search" (keyup)="applyFilter($event.target.value, 'userlist')">
+          </mat-form-field>
+          <span class="pc-content-spacer"></span>
+          <span>
+            <button mat-button [matMenuTriggerFor]="filter">
+              <mat-icon>filter_list</mat-icon>Filter</button>
+            <mat-menu #filter="matMenu" xPosition="before">
+              <button mat-menu-item>
+                <mat-checkbox [(ngModel)]="checkedAll">All</mat-checkbox>
+              </button>
+              <div class="ml-1">
+                <button mat-menu-item>
+                  <mat-checkbox [checked]="checkedAll" (change)="checkedFilter($event, 'fund')">Funds</mat-checkbox>
+                </button>
+
+                <button mat-menu-item>
+                  <mat-checkbox [checked]="checkedAll" (change)="checkedFilter($event, 'company')">Companies</mat-checkbox>
+                </button>
+                <button mat-menu-item>
+                  <mat-checkbox [checked]="checkedAll" (change)="checkedFilter($event, 'hni')">HNIs</mat-checkbox>
+                </button>
+              </div>
+              <hr>
+              <button mat-menu-item>
+                <mat-slide-toggle (change)="checkedFilter($event, 'no')">Dont show
+                  <br> locked interactions</mat-slide-toggle>
+              </button>
+            </mat-menu>
+          </span>
+        </mat-card-header>
+        <mat-card-content class="scroll">
+          <div class="content-padding" *ngFor="let record of records | filter: queryString: 'userlist' ">
+            <div class="pc-content" [ngClass]="{'active': selectedRecord?.id == record.id}">
+              <img class="img-rounded" [src]="record.companyLogo" width="50" height="50">
+              <div class="pc-content-body">
+                <div class="pc-cursor" (click)="getData(record.id)">
+                  <span class="pc-content-head">{{record.type}}</span>
+                  <p>
+                    <b>{{record.companyName}}</b>
+                  </p>
+                  <span class="pc-members">
+                    <p>{{record.member}}</p>
+                    <p>{{record.loggedUser}}</p>
+                  </span>
+                </div>
+                <span class="pc-content-notifications">
+                  <span class="pc-cursor">
+                    <mat-icon matBadge="-" matBadgeSize="small" matBadgeColor="warn">mail_outline</mat-icon>&nbsp; {{record.mail}}</span>
+                  <span class="pc-cursor">
+                    <mat-icon matBadge="">person_outline</mat-icon>&nbsp; {{record.people}}</span>
+                  <span class="pc-cursor">
+                    <mat-icon matBadge="">{{record.icon}}</mat-icon>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </mat-card-content>
+
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="2" rowspan="1">
+      <mat-card id="pc-user-head">
+        <mat-card-content>
+          <div class="pc-content active ">
+            <img class="img-rounded" [src]="selectedRecord?.companyLogo" width="50" height="50">
+            <div class="pc-content-body">
+              <span class="pc-content-head">{{selectedRecord?.type}}</span>
+              <p>
+                <b>{{selectedRecord?.companyName}}</b>
+              </p>
+            </div>
+            <span class="pc-content-spacer"></span>
+            <span class="span-border">
+              <p>Members</p>
+              <span class="pc-head-content">
+                <button mat-button [matMenuTriggerFor]="dashboard" style="padding: 0">
+                  {{selectedRecord?.member}}
+                  <span class="more-members">+4</span>
+                  <mat-icon>arrow_drop_down</mat-icon>
+                </button>
+
+                <mat-menu #dashboard="matMenu">
+                  <span style="font-size:0.8rem;padding-left: 1rem;">INTERACTION OWNER</span>
+                  <button mat-menu-item class="pc-content">
+                    <img class="img-rounded" [src]="selectedRecord?.companyLogo" width="30" height="30" style="margin-top: 4px">
+                    <span style="font-size:0.8rem;padding-left: 0.5rem;">{{selectedRecord?.member}}</span>
+                  </button>
+                  <mat-divider></mat-divider>
+                  <button mat-menu-item class="pc-content">
+                      <img class="img-rounded" src="https://images.mid-day.com/images/2018/mar/Sachin-Tendulkar-nei-a.jpg" width="30" height="30" style="margin-top: 4px">
+                      <span style="font-size:0.8rem;padding-left: 0.5rem;">Sachin Tendulkar</span>
+                  </button>
+                  <button mat-menu-item class="pc-content">
+                    <img class="img-rounded" src="http://images.mid-day.com/images/2017/sep/MS-Dhoni-catch.jpg" width="30" height="30" style="margin-top: 4px">
+                    <span style="font-size:0.8rem;padding-left: 0.5rem;">M S Dhoni</span>
+                  </button>
+                  <button mat-menu-item class="pc-content">
+                    <img class="img-rounded" src="https://i2.cinestaan.com/image-bank/1500-1500/122001-123000/122918.jpg" width="30" height="30" style="margin-top: 4px">
+                    <span style="font-size:0.8rem;padding-left: 0.5rem;">Ashish Nehra</span>
+                  </button>
+                  <button mat-menu-item class="pc-content">
+                    <img class="img-rounded" src="https://cdn.images.dailystar.co.uk/dynamic/63/photos/316000/620x/22316.jpg" width="30" height="30" style="margin-top: 4px">
+                    <span style="font-size:0.8rem;padding-left: 0.5rem;">David Warner</span>
+                  </button>
+                </mat-menu>
+                <button mat-button [matMenuTriggerFor]="browse" style="padding: 0">
+                  {{selectedRecord?.loggedUser}} (You)
+                  <span class="more-members">+5</span>
+                  <mat-icon>arrow_drop_down</mat-icon>
+                </button>
+                <mat-menu #browse="matMenu">
+                  <button mat-menu-item>Item 1</button>
+                  <button mat-menu-item>Item 2</button>
+                </mat-menu>
+              </span>
+            </span>
+            <span class="vl"></span>
+            <button class="custom-mat-stroked-button" mat-stroked-button>
+              <mat-icon>expand_more</mat-icon>
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="2" rowspan="5">
+      <mat-card id="pc-content-container">
+        <mat-card-header>
+          <mat-form-field floatLabel="never">
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="Search" (keyup)="applyFilter($event.target.value, 'chatlist')">
+          </mat-form-field>
+        </mat-card-header>
+        <mat-card-content class="scroll">
+          <div class="container-box">
+            <div class="pc-content" *ngFor="let chatData of chatRoom | filter: chatQueryString: 'chatlist'">
+              <img class="img-rounded" [src]="chatData.img" width="35" height="35">
+              <div class="pc-content-body">
+                <span class="pc-user-response">
+                  <span>
+                    <h4>
+                      <b>{{chatData.username}}</b>
+                    </h4>
+                  </span>
+                  <span class="pc-user-response-data">
+                    <p>{{chatData.date}}</p>
+                    <p>{{chatData.time}}</p>
+                  </span>
+                </span>
+                <div class="" [ngClass]="{'pc-user-response-content': chatData.id != selectedMessageId }" (click)="showMessage(chatData.id)">
+                  <p>{{chatData.msg}}</p>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-footer>
+          <mat-form-field appearance="outline">
+            <img matPrefix class="img-rounded" src="https://nyppagesix.files.wordpress.com/2018/04/john-cena-index.jpg?quality=90&strip=all"
+              width="35" height="35">
+            <input matInput placeholder="Start typing here to reply">
+            <button matSuffix mat-button>
+              <mat-icon>send</mat-icon>
+            </button>
+          </mat-form-field>
+        </mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<!-- Handset Layout -->
+<ng-template #handset>
+  <mat-toolbar>
+    <mat-toolbar-row class="pc-primary-bg-color">
+      <mat-icon *ngIf="handsetChatMessage; else menubutton" (click)="goback()">arrow_back</mat-icon>
+      <ng-template #menubutton>
+        <mat-icon>menu</mat-icon>
+      </ng-template>
+      <mat-form-field floatLabel="never" *ngIf="searchBoxField; else hideSearch" style="width:90%">
+        <input matInput placeholder="" (keyup)="applyFilter($event.target.value, 'chatlist')" *ngIf="handsetChatMessage; else mailsearch">
+        <ng-template #mailsearch>
+          <input matInput placeholder="Search" (keyup)="applyFilter($event.target.value, 'userlist')">
+        </ng-template>
+        <button mat-button matSuffix mat-icon-button (click)="searchBoxField = false">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <ng-template #hideSearch>
+        <span>Message</span>
+      </ng-template>
+      <span class="navbar-spacer"></span>
+      <mat-icon *ngIf="handsetChatMessage; else filterButton">person_outline</mat-icon>
+      <ng-template #filterButton>
+        <mat-icon [matMenuTriggerFor]="filter">filter_list</mat-icon>
+      </ng-template>
+      <mat-menu #filter="matMenu" xPosition="before">
+        <button mat-menu-item>
+          <mat-checkbox [(ngModel)]="checkedAll">All</mat-checkbox>
+        </button>
+        <div class="ml-1">
+          <button mat-menu-item>
+            <mat-checkbox [checked]="checkedAll" (change)="checkedFilter($event, 'fund')">Funds</mat-checkbox>
+          </button>
+
+          <button mat-menu-item>
+            <mat-checkbox [checked]="checkedAll" (change)="checkedFilter($event, 'company')">Companies</mat-checkbox>
+          </button>
+          <button mat-menu-item>
+            <mat-checkbox [checked]="checkedAll" (change)="checkedFilter($event, 'hni')">HNIs</mat-checkbox>
+          </button>
+        </div>
+        <hr>
+        <button mat-menu-item>
+          <mat-slide-toggle (change)="checkedFilter($event, 'no')">Dont show
+            <br> locked interactions</mat-slide-toggle>
+        </button>
+      </mat-menu>
+      <mat-icon (click)="searchBox()" *ngIf="!searchBoxField">search</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div *ngIf="!handsetChatMessage">
+    <div class="handset-content-padding" *ngFor="let record of records | filter: queryString: 'userlist'">
+      <div class="handset-pc-content pc-content" [ngClass]="{'active': selectedRecord?.id == record.id}">
+        <img class="img-rounded" [src]="record.companyLogo" width="50" height="50">
+        <div class="pc-content-body">
+          <div class="pc-cursor" (click)="getChatDataForHandset(record.id);">
+            <span class="pc-content-head">{{record.type}}</span>
+            <p>
+              <b>{{record.companyName}}</b>
+            </p>
+            <span class="pc-members">
+              <p>{{record.member}}</p>
+              <p>{{record.loggedUser}}</p>
+            </span>
+          </div>
+          <span class="pc-content-notifications">
+            <span class="pc-cursor">
+              <mat-icon matBadge="-" matBadgeSize="small" matBadgeColor="warn">mail_outline</mat-icon>&nbsp; {{record.mail}}</span>
+            <span class="pc-cursor">
+              <mat-icon matBadge="">person_outline</mat-icon>&nbsp; {{record.people}}</span>
+            <span class="pc-cursor">
+              <mat-icon matBadge="">{{record.icon}}</mat-icon>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="pc-content-container" *ngIf="handsetChatMessage">
+    <mat-card style="padding: 0rem; margin:0.8rem;height: 80vh">
+      <mat-card-content class="scroll" style="height: 100%;">
+        <div class="pc-content" *ngFor="let chatData of chatRoom | filter: chatQueryString : 'chatlist'" style="padding: 1rem;">
+          <img class="img-rounded" [src]="chatData.img" width="35" height="35">
+          <div class="pc-content-body">
+            <span class="pc-user-response">
+              <span>
+                <h4>
+                  <b>{{chatData.username}}</b>
+                </h4>
+              </span>
+              <span class="pc-user-response-data">
+                <p>{{chatData.date}}</p>
+                <p>{{chatData.time}}</p>
+              </span>
+            </span>
+            <div [style.width]="chatData.id == selectedMessageId ? '100%' : '15rem'" [style.white-space]="chatData.id == selectedMessageId ? '' : 'nowrap'"
+              [style.overflow]="chatData.id == selectedMessageId ? '' : 'hidden'" [style.text-overflow]="chatData.id == selectedMessageId ? '' : 'ellipsis'">
+              <p (click)="showMessage(chatData.id)" style="text-align: justify">{{chatData.msg}}</p>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+    <mat-card style="margin: 0.8rem;padding: 0rem;">
+      <mat-card-content>
+        <div class="chat-input">
+          <mat-form-field appearance="outline">
+            <img matPrefix class="img-rounded" src="https://nyppagesix.files.wordpress.com/2018/04/john-cena-index.jpg?quality=90&strip=all"
+              width="35" height="35">
+            <input matInput placeholder="Start typing here to reply">
+            <button matSuffix mat-button>
+              <mat-icon>send</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</ng-template>

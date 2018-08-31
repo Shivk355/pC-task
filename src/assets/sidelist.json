@@ -1,0 +1,86 @@
+[
+    {
+        "id": "1",
+        "companyLogo": "https://www.wallpaperswidefree.com/timthumb.php?src=images/Rohit-Sharma-black-and-white-hd-wallpapers.jpg&h=0&w=480&zc=1",
+        "type": "Company",
+        "companyName": "CMS Info Systems Limited",
+        "member": "Rohit Kumar",
+        "loggedUser": "John Doe",
+        "mail": "3",
+        "people": "9",
+        "icon": "add",
+        "lock": "no"
+    },
+    {
+        "id": "2",
+        "companyLogo": "https://www.udayavani.com/sites/default/files/images/english_articles/2018/02/9/kohli-8.jpg",
+        "type": "Fund",
+        "companyName": "ABC venture Capital",
+        "member": "Virat Kohli",
+        "loggedUser": "John Doe",
+        "mail": "1",
+        "people": "7",
+        "icon": "lock",
+        "lock": "yes"
+    },
+    {
+        "id": "3",
+        "companyLogo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn9_z6tQFa5zcShm84SQzxvCO3ayW3d3B8LhZU4ohu3YX-2LY6",
+        "type": "HNI",
+        "companyName": "Jeff Bezos",
+        "member": "Shikhar Dhawan",
+        "loggedUser": "John Doe",
+        "mail": "7",
+        "people": "3",
+        "icon": "add",
+        "lock": "no"
+    },
+    {
+        "id": "4",
+        "companyLogo": "https://images.mid-day.com/images/2018/mar/Sachin-Tendulkar-nei-a.jpg",
+        "type": "Company",
+        "companyName": "DEF Service Limited",
+        "member": "Sachin Tendulkar",
+        "loggedUser": "John Doe",
+        "mail": "4",
+        "people": "2",
+        "icon": "add",
+        "lock": "no"
+    },
+    {
+        "id": "5",
+        "companyLogo": "http://images.mid-day.com/images/2017/sep/MS-Dhoni-catch.jpg",
+        "type": "HNI",
+        "companyName": "CMS Info Systems Limited",
+        "member": "M S Dhoni",
+        "loggedUser": "John Doe",
+        "mail": "5",
+        "people": "7",
+        "icon": "lock_open",
+        "lock": "no"
+    },
+    {
+        "id": "6",
+        "companyLogo": "https://i2.cinestaan.com/image-bank/1500-1500/122001-123000/122918.jpg",
+        "type": "Fund",
+        "companyName": "CMS Info Systems Limited",
+        "member": "Ashish Nehra",
+        "loggedUser": "John Doe",
+        "mail": "9",
+        "people": "6",
+        "icon": "lock_open",
+        "lock": "no"
+    },
+    {
+        "id": "7",
+        "companyLogo": "https://cdn.images.dailystar.co.uk/dynamic/63/photos/316000/620x/22316.jpg",
+        "type": "Company",
+        "companyName": "CMS Info Systems Limited",
+        "member": "David Warner",
+        "loggedUser": "John Doe",
+        "mail": "4",
+        "people": "5",
+        "icon": "lock",
+        "lock": "yes"
+    }
+]

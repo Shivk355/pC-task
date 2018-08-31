@@ -1,0 +1,31 @@
+<mat-toolbar *ngIf="!isMatched">
+  <mat-toolbar-row>
+    <span>
+      <img src="./assets/pc_logo.png" width="200">
+    </span>
+    <span class="navbar-spacer"></span>
+    <mat-icon class="pc-nav-icon">dashboard</mat-icon>
+    <mat-icon class="pc-nav-icon" matBadge="1" matBadgePosition="before">notifications_none</mat-icon>
+    <mat-icon class="pc-nav-icon">mail_outline</mat-icon>
+    <img class="img-rounded" src="https://nyppagesix.files.wordpress.com/2018/04/john-cena-index.jpg?quality=90&strip=all" width="40"
+      height="40">
+  </mat-toolbar-row>
+  <mat-toolbar-row class="pc-primary-bg-color">
+    <button mat-button>
+      <mat-icon>dashboard</mat-icon>&nbsp;Dashboard&nbsp;
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <button mat-button>
+      <mat-icon>search</mat-icon>&nbsp;Browse&nbsp;
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <button mat-button>
+      <mat-icon>perm_identity</mat-icon>&nbsp;Profile&nbsp;
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <button mat-button>
+      <mat-icon>receipt</mat-icon>&nbsp;Interect&nbsp;
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,151 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 8px 0;
+}
+
+p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.material-icons {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.records-container .mat-grid-tile .mat-figure {
+    display: block;
+    height: 100%;
+}
+
+.records-container .mat-card {
+    height: 100%;
+}
+
+.records-container .mat-form-field-prefix {
+    top: 6px;
+}
+
+.records-container .mat-form-field-infix {
+    border-top-width: 0px;
+}
+
+.records-container .mat-card-header-text {
+    margin: 0px;
+}
+
+.img-rounded {
+    border-radius: 50%;
+}
+
+.mat-grid-tile {
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    -moz-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.pc-content .material-icons {
+    top: 4px;
+}
+
+.pc-content .mat-badge-small .mat-badge-content {
+    width: 12px;
+    height: 12px;
+    color: #f44336;
+}
+
+.pc-content .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 0px;
+}
+
+.pc-content .mat-badge-small.mat-badge-above .mat-badge-content {
+    top: -4px;
+}
+
+#pc-content-container .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0 !important;
+    padding: 0;
+}
+
+#pc-content-container .mat-form-field-appearance-outline .mat-form-field-prefix {
+    top: 0.8rem;
+}
+
+#pc-content-container .mat-form-field-appearance-outline .mat-form-field-flex {
+    /* top: 0.8rem; */
+    padding: 0 0 0 0.75em;
+}
+
+#pc-content-container .mat-card-footer .mat-form-field-infix {
+    border-right: 1px solid #ddd;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+}
+
+
+#pc-content-container .mat-card-footer .material-icons{
+    padding: 0.9rem;
+    -ms-transform: rotate(-40deg); /* IE 9 */
+    -webkit-transform: rotate(-40deg); /* Safari 3-8 */
+    transform: rotate(-40deg);
+}
+
+/* Scroll style */
+.scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* .scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 0px;
+} */
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.mat-menu-item {
+    line-height: 2.5rem !important;
+    height: 2.5rem !important;
+}
+
+/* Navbar style */
+.navbar-spacer {
+    flex: 1 1 auto;
+}
+
+.pc-nav-icon {
+    margin: 0 8px;
+}
+
+.mat-toolbar {
+    background-color: #FFFFFF;
+    color: #00695c;
+}
+
+.mat-toolbar .pc-primary-bg-color{
+    background-color: #00695c;
+    color: #fafafa;
+    height: 50px;
+}
+
+.mat-menu-panel {
+    position: relative;
+    top: 2.5rem;
+}
